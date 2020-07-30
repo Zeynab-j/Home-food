@@ -9,6 +9,7 @@ class BlogsController < ApplicationController
     @blog = Blog.new
   end
 
+  #post request
   def create
     @blog = Blog.new(blog_params)
     if @blog.save
@@ -23,5 +24,4 @@ class BlogsController < ApplicationController
   def blog_params
     params.require(:blog).permit(:category)
   end
-
 end
