@@ -1,0 +1,3 @@
+<% @post.comments.each do |c| %>
+  <%= c.comment %> by <i><%= c.user.email %></i> <br><br>
+<% end %>

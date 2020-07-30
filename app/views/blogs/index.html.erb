@@ -1,0 +1,8 @@
+
+<h1>Blogs</h1>
+<hr>
+<% @blogs.each do |c| %>
+  <%= c.category %><br><br>
+<% end %>
+
+<%= link_to "New Category", new_blog_path %>

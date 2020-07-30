@@ -1,0 +1,19 @@
+<h1> New Post</h1>
+
+<h3><%= @post.title %></h3>
+<br>
+<%=  @post.content %>
+<br>
+
+<hr>
+<h4>All comments</h4>
+<%= render partial: 'comments/index' %>
+
+<hr>
+
+<h4>New comment </h4>
+<%= render partial: 'comments/form' %>
+
+
+<%= link_to "Edit", edit_post_path(@post) %>
+<%= link_to "Delete", post_path(@post) %>

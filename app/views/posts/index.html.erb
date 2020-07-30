@@ -1,0 +1,29 @@
+<div class="main-section">
+     <h1 style="background-color:blue"> All Posts</h1>
+       <table id="customers">
+        <thead>
+           <tr>
+             <th>Title</th>
+             <th>Content</th>
+             <!-- <th>User Email</th> -->
+             <th>Category</th>
+             </tr>
+             </thead>
+             <tbody>
+		<% @posts.each do |post| %>
+          <tr>
+           <td><%= post.title%></td>
+           <td><%= post.content%></td>
+           <!-- <td><%= post.user_id.present? ? post.user.email : 'Handle by ternary' %></td> -->
+           <td><%= post.blog_id.present? ? post.blog.category : 'NA'  %></td>
+         </tr>
+
+
+        <% end %>
+		</tbody>
+        </table>
+          <br>
+          <br>
+          <br>
+          <%= link_to 'New Post' , new_post_path %>
+</div>
