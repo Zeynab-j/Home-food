@@ -1,29 +1,28 @@
-<div class="main-section">
-     <h1 style="background-color:blue"> All Posts</h1>
-       <table id="customers">
-        <thead>
-           <tr>
-             <th>Title</th>
-             <th>Content</th>
-             <!-- <th>User Email</th> -->
-             <th>Category</th>
-             </tr>
-             </thead>
-             <tbody>
-		<% @posts.each do |post| %>
-          <tr>
-           <td><%= post.title%></td>
-           <td><%= post.content%></td>
-           <!-- <td><%= post.user_id.present? ? post.user.email : 'Handle by ternary' %></td> -->
-           <td><%= post.blog_id.present? ? post.blog.category : 'NA'  %></td>
-         </tr>
+<div class="container" >
+  <h4 class="c-white">All Posts</h4>
+  <%= link_to 'New Post' , new_post_path, class: "btn btn-primary btn-right" %>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="c-white">Title</th>
+        <th class="c-white">Content</th>
+        <th class="c-white">Category</th>
+        <th class="c-white">Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+            <tr>
+             <td class="c-white"><%= link_to post.title, post_path(post.id), class: "c-white"%></td>
+             <td class="c-white"><%= post.content%></td>
+
+             <td class="c-white"><%= post.blog_id.present? ? post.blog.category : 'NA'  %></td>
+             <td class="c-white"><%= post.user.try(:email)%></td>
+           </tr>
 
 
-        <% end %>
-		</tbody>
-        </table>
-          <br>
-          <br>
-          <br>
-          <%= link_to 'New Post' , new_post_path %>
+          <% end %>
+    </tbody>
+  </table>
 </div>

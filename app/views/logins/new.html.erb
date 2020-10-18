@@ -1,24 +1,42 @@
-<h1>Login</h1>
 
-<%= form_for @user, url: {controller: 'logins', action: 'create'} do |f| %>
-<% if @user.errors.present? %>
-  <ul>
-  <% @user.errors.full_messages.each do |error|%>
 
-    <li><%= error %></li>
+<div class="limiter">
+  <div class="container-login100" style="background-image: url('../assets/bg-01.jpg');">
 
-  <% end %>
-  </ul>
-<%  end %>
+    <div class="wrap-login100 p-t-30 p-b-50">
+      <span class="login100-form-title p-b-41">
+        Login
+      </span>
+      <%= form_for @user, url: {controller: 'logins', action: 'create'}, class: "login100-form validate-form p-b-33 p-t-5" do |f| %>
+      <% if @user.errors.present? %>
+        <ul>
+        <% @user.errors.full_messages.each do |error|%>
 
-<%= f.label :email %>
-<%= f.text_field :email %>
-<br>
-<br>
-<br>
-<%= f.label :password_digest %>
-<%= f.password_field :password_digest %>
+          <li class="text-danger"><%= error %></li>
 
-<%= f.submit "Login"%>
+        <% end %>
+        </ul>
+      <%  end %>
 
-<% end %>
+        <div class="wrap-input100 validate-input" data-validate = "Enter username">
+          <%= f.text_field :email, class: "input100",placeholder: "Enter email"%>
+          <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Enter password">
+          <%= f.password_field :password_digest, class: "input100",placeholder: "Enter Password" %>
+          <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+        </div>
+
+        <div class="container-login100-form-btn m-t-32">
+          <%= f.submit "Login",class: "login100-form-btn" %>
+
+        </div>
+        
+      <div class="container-login100-form-btn m-t-32">
+              <%=link_to "Signup", new_registration_path, class: "login100-form-btn"%>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,45 @@
-<h1> New Post</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <h2 class="c-white"><%= @post.title.capitalize%></h2>
+      <br>
+      <p class="c-white"><%=  @post.content %></p>
+      <br>
+      <div class="row">
+        <div class="column">
+          <%= image_tag @post.image_url, class: "img-responsive img-size", style:"width: 150%";%>
+        </div>
 
-<h3><%= @post.title %></h3>
-<br>
-<%=  @post.content %>
-<br>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
+
 
 <hr>
-<h4>All comments</h4>
+<div class="container">
+  <button type="button" class="btn btn-primary">
+    All comments <span class="badge badge-light"><%= @post.comments.count%></span>
+  </button>
+  <br>
+  <br>
 <%= render partial: 'comments/index' %>
+</div>
 
 <hr>
-
-<h4>New comment </h4>
+<div class="container">
+<h4 class="c-white">New comment </h4>
 <%= render partial: 'comments/form' %>
+ </div>
+<% if session[:current_user].present? && signned_user.id == @post.user.id %>
+<%= link_to "Edit", edit_post_path(@post), class: "btn btn-warning" %>
+<%= link_to "Delete", post_path(@post), method:  "DELETE", class: "btn btn-danger" %>
+<%end%>
 
-
-<%= link_to "Edit", edit_post_path(@post) %>
-<%= link_to "Delete", post_path(@post) %>
+<style media="screen">
+  {   box-sizing: border-box; }  .column
+   {   float: left;   width: 33.33%;   padding: 5px; }  /* Clearfix (clear floats) */ .row::after {   content: "";   clear: both;   display: table; }  .img-size{
+     width: 180% !important;
+   }
+</style>

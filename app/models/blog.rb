@@ -1,4 +1,6 @@
 class Blog < ApplicationRecord
-    has_many :posts 
-    has_many :users, through: :posts 
+    has_many :posts, dependent: :destroy
+    has_many :users, through: :posts
+
+    validates_presence_of :category
 end

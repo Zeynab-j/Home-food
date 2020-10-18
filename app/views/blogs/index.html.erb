@@ -1,8 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+<h1 class="c-white">Blogs</h1>
 
-<h1>Blogs</h1>
-<hr>
-<% @blogs.each do |c| %>
-  <%= c.category %><br><br>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="c-white">Category</th>
+      <th class="c-white">Created On</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @blogs.each do |c| %>
+          <tr>
+           <td class="c-white"><%= c.category %></td>
+           <td class="c-white"><%= c.created_at.strftime("%b %d %Y %H:%M %p")%></td>
 
-<%= link_to "New Category", new_blog_path %>
+
+
+         </tr>
+
+
+        <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New Category", new_blog_path, class: "btn btn-primary c-white" %>
+</div>
+
+
+</div>
+</div>

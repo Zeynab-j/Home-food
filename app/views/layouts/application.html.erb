@@ -7,17 +7,55 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   </head>
 
-  <body>
-    <% if session[:current_user].present? %>
-      <%= link_to "All Posts", posts_path %>
-      <%= link_to "All Categories", blogs_path %>
-      <%= link_to "Signout", logins_path, method: :delete %>
-    <% else %>
-      <%= link_to "Login", new_logins_path %> |
-      <%= link_to "Registration", new_registration_path %>
-    <% end %>
-    <%= yield %>
+  <body style="background-image: url(../assets/bk.jpg);
+    background-repeat: round; !important">
+    <%unless params[:controller] == "logins" || params[:controller] == "registrations"%>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">Share a Dish</a>
+
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <% if session[:current_user].present? %>
+        <li class="nav-item">
+          <%=link_to "Home", posts_path, class: "nav-link"%>
+        </li>
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Categories
+          </a>
+          <div class="dropdown-menu">
+            <%Blog.pluck(:category, :id).each do |c, id|%>
+            <%=link_to c, posts_path(blog_id: id), class: "dropdown-item"%>
+            <%end%>
+          </div>
+        </li>
+        <li class="nav-item">
+          <%=link_to "logout", logins_path, method: "DELETE", class: "nav-link pull-right"%>
+        </li>
+        <%else%>
+        <li class="nav-item">
+          <%= link_to "Login", new_logins_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+          <%= link_to "Registration", new_registration_path, class: "nav-link" %>
+        </li>
+        <%end%>
+      </ul>
+    </nav>
+<br>
+<br>
+
+<% end %>
+<div>
+  <%= yield %>
+</div>
   </body>
 </html>

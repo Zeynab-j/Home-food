@@ -1,5 +1,5 @@
 
-<%= form_for @post do |f| %>
+<%= form_for @post, multipart: true do |f| %>
 <% if @post.errors.present? %>
   <ul>
   <% @post.errors.full_messages.each do |error|%>
@@ -9,18 +9,22 @@
   <% end %>
   </ul>
 <% end %>
-
-<%= f.label :blog_id, "Category" %> <br>
-<%= f.select :blog_id, Blog.all.map{|blog| [blog.category, blog.id]}, {include_blank: true}%> <br> <br>
-
-<%= f.label :title %> <br>
-<%= f.text_field :title %>
-<br>
-<br>
-<%= f.label :content %> <br>
-<%= f.text_area :content %>
-
-
-<%= f.submit "Create A Post"%>
+<div class="form-group">
+<%= f.label :blog_id, "Category", class: "c-white" %> <br>
+<%= f.select :blog_id, Blog.all.map{|blog| [blog.category, blog.id]}, {prompt: "--Select Category--"}, class: "form-control"%>
+</div>
+<div class="form-group">
+<%= f.label :title, class: "c-white" %>
+<%= f.text_field :title, class: "form-control"  %>
+</div>
+<div class="form-group">
+<%= f.label :content, class: "c-white" %>
+<%= f.text_area :content, class: "form-control" %>
+</div>
+<div class="form-group">
+<%= f.label :image, class: "c-white" %>
+<%= f.file_field :image, class: "form-control"%>
+</div>
+<%= f.submit "Create", class: "btn btn-primary"%>
 
 <% end %>

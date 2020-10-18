@@ -1,7 +1,17 @@
-<h1>New Blog</h1>
-<%= form_for @blog do |f| %>
-  <%= f.label :category %> <br>
-  <%= f.text_field :category %> <br>
-
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <h1 class="c-white">New Blog</h1>
+  <div class="form-group">
+   <%= form_for @blog, method: 'post'  do |f| %>
+   <% if @blog.errors.present? %>
+   <ul>
+     <% @blog.errors.full_messages.each do |error|%>
+       <li class = "text-danger"><%= error %></li>
+     <% end %>
+   </ul>
+   <% end %>
+    <%= f.label :category, class: "c-white" %> <br>
+    <%= f.text_field :category, class: "form-control" %> <br>
+  </div>
+    <%= f.submit "Create", class: "btn btn-primary" %>
+  <% end %>
+</div>

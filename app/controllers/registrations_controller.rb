@@ -1,8 +1,6 @@
 class RegistrationsController < ApplicationController
-
-  def new
-    @user = User.new
-  end
+  before_action :get_user, only:[:new]
+  def new;end
 
   def create
     @user = User.new(user_params)
@@ -18,5 +16,9 @@ class RegistrationsController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password_digest)
+  end
+
+  def get_user
+    @user = User.new
   end
 end

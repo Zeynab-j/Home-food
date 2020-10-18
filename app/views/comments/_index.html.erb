@@ -1,3 +1,12 @@
-<% @post.comments.each do |c| %>
-  <%= c.comment %> by <i><%= c.user.email %></i> <br><br>
-<% end %>
+<div class="container">
+
+<div class="row">
+  <div class="col-xs-6">
+    <% @post.comments.each do |c| %>
+      <p class="c-white"><%= c.comment %> by </p><i class="c-white"><%= c.user.email %></i> <br><br>
+    <% end %>
+  </div>
+
+
+</div>
+</div>

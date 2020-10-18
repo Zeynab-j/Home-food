@@ -1,4 +1,5 @@
 class LoginsController < ApplicationController
+  before_action :get_user_with_email, only: [:create]
 
   def new
     if session[:current_user].present?
@@ -9,17 +10,17 @@ class LoginsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: user_params[:email])
-    if user.present? && user.password_digest == user_params[:password_digest]
-      session[:current_user] = user
+
+    if @user.present? && @user.password_digest == user_params[:password_digest]
+      session[:current_user] = @user
       redirect_to root_path
     else
-      @user = User.new
       render :new, alert: "Something is wrong. Make sure you are entering the right credentials"
     end
   end
 
   def destroy
+
     if session[:current_user].present?
       session.delete(:current_user)
       redirect_to new_logins_path
@@ -30,5 +31,9 @@ class LoginsController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password_digest)
+  end
+
+  def get_user_with_email
+    @user = User.find_by(email: user_params[:email])
   end
 end

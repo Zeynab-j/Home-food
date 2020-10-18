@@ -1,9 +1,8 @@
 class BlogsController < ApplicationController
   before_action :authenticate_user!
+  before_action :get_blogs, only: [:index]
 
-  def index
-    @blogs = Blog.all
-  end
+  def index;end
 
   def new
     @blog = Blog.new
@@ -22,5 +21,9 @@ class BlogsController < ApplicationController
 
   def blog_params
     params.require(:blog).permit(:category)
+  end
+
+  def get_blogs
+    @blogs = Blog.all
   end
 end
