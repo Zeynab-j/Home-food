@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Local Dish is a recipe web application that allows individuals and families to share diverse homemade dishes. This Ruby App is built using the rails framework.
 
-Things you may want to cover:
+Features
+Users can:
+* Sign-up/Log-in/Log-out
+* Create and edit their blog post
+* Visit and view other users’ blog post
+* Create comment
+* Upload photos using carrierwave gem
+* Enjoy secure and session-based authorization for user-login accounts
 
-* Ruby version
 
-* System dependencies
+Tech Stack
+* Ruby [2.6.1]
+* Rails [6.0.2]
+* SQLite3
+* Bootstrap,JS, CSS
+* BCrypt
 
-* Configuration
+Installation
+* Clone the github repository to your local machine git clone <this-repo-url>
+* CD into the directory
+* Run bundle install to install gem dependancies
+* Create the database : rake db:create
+* Migrate the database: rake db:migrate
+* Seed the database: rake db:seed
+* Start the rails server : rails s
+* Visit localhost:3000 to view the web app
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Screenshots
+![alt text](https://raw.githubusercontent.com/Zeynab-j/Home-food/master/app/assets/images/bk.jpg)
