@@ -30,4 +30,12 @@ Installation
 * Visit localhost:3000 to view the web app
 
 Screenshots
-![alt text](https://raw.githubusercontent.com/Zeynab-j/Home-food/master/app/assets/images/bk.jpg)
+![alt text](https://raw.githubusercontent.com/Zeynab-j/Home-food/master/app/assets/images/Login.png)
+![alt text](https://raw.githubusercontent.com/Zeynab-j/Home-food/master/app/assets/images/Registration.png)
+![alt text](https://raw.githubusercontent.com/Zeynab-j/Home-food/master/app/assets/images/Allposts.png)
+![alt text](https://raw.githubusercontent.com/Zeynab-j/Home-food/master/app/assets/images/NewPost.png)
+![alt text](https://raw.githubusercontent.com/Zeynab-j/Home-food/master/app/assets/images/post.png)
+![alt text](https://raw.githubusercontent.com/Zeynab-j/Home-food/master/app/assets/images/comments.png)
+![alt text](https://raw.githubusercontent.com/Zeynab-j/Home-food/master/app/assets/images/Listcategories.png)
+![alt text](https://raw.githubusercontent.com/Zeynab-j/Home-food/master/app/assets/images/categories.png)
+![alt text](https://raw.githubusercontent.com/Zeynab-j/Home-food/master/app/assets/images/Blogcategories.png)
